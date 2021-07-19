@@ -14,13 +14,13 @@ function Navbar() {
         <div className="nav-title">Dforce Gaming Esports </div>
         <ul className="nav-list">
           <li className="nav-list-item">
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <FontAwesomeIcon icon={faShoppingCart} size="2x" />
           </li>
           <li className="nav-list-item">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} size="2x" />
           </li>
           <li className="nav-list-item">
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart} size="2x" />
           </li>
         </ul>
       </nav>
