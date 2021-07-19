@@ -1,22 +1,36 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
 
 function Carousel() {
-  const [imageData, setImageData] = useState([]);
+  const [data, setData] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
-    const getImageData = async () => {
-      const { data } = await axios.get("api/products");
-      setImageData(data);
-    };
-    getImageData();
+    getData();
   }, []);
 
-  return (
-    <div>
-      <img src={imageData.products[0]} alt="hero-image" />
-    </div>
-  );
+  async function getData() {
+    await fetch("http://localhost:5000/api/products")
+      .then((response) => response.json())
+      .then((response) => setData(response));
+  }
+
+  setTimeout(() => {
+    if (imageIndex < data.products?.length - 1) {
+      setImageIndex(imageIndex + 1);
+    } else {
+      setImageIndex(0);
+    }
+  }, 4000);
+
+  if (data.products === undefined) {
+    return <h3>Loading</h3>;
+  } else {
+    return (
+      <div>
+        <img src={data.products[imageIndex].image} alt="hero" />
+      </div>
+    );
+  }
 }
 
 export default Carousel;
