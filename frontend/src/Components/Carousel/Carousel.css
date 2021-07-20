@@ -1,0 +1,12 @@
+:root {
+  --image-background: #ea910f;
+}
+
+.carousel-image {
+  width: 60vw;
+  height: 40vh;
+}
+
+.image-container {
+  background-color: var(--image-background);
+}

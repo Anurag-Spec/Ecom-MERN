@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import "./Carousel.css";
 
 function Carousel() {
   const [data, setData] = useState([]);
@@ -26,8 +27,12 @@ function Carousel() {
     return <h3>Loading</h3>;
   } else {
     return (
-      <div>
-        <img src={data.products[imageIndex].image} alt="hero" />
+      <div className="image-container">
+        <img
+          className="carousel-image"
+          src={data.products[imageIndex].image}
+          alt="product"
+        />
       </div>
     );
   }
