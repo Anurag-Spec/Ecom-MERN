@@ -1,41 +1,44 @@
 import { React, useEffect, useState } from "react";
 import "./Carousel.css";
+import { useSelector, useDispatch } from "react-redux";
+import { listProducts } from "../../actions/actions";
 
 function Carousel() {
-  const [data, setData] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  async function getData() {
-    await fetch("http://localhost:5000/api/products")
-      .then((response) => response.json())
-      .then((response) => setData(response));
-  }
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   setTimeout(() => {
-    if (imageIndex < data.products?.length - 1) {
+    if (imageIndex < products?.length - 1) {
       setImageIndex(imageIndex + 1);
     } else {
       setImageIndex(0);
     }
   }, 4000);
 
-  if (data.products === undefined) {
-    return <h3>Loading</h3>;
-  } else {
-    return (
-      <div className="image-container">
-        <img
-          className="carousel-image"
-          src={data.products[imageIndex].image}
-          alt="product"
-        />
-      </div>
-    );
-  }
+  useEffect(() => {
+    dispatch(listProducts());
+  }, []);
+
+  return (
+    <div>
+      {loading ? (
+        <div>Loading</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <div className="image-container">
+          <img
+            className="carousel-image"
+            src={products[imageIndex].image}
+            alt="product"
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Carousel;

@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar">
-        <div className="nav-title">Dforce Gaming Esports </div>
+        <div className="nav-title">Dforce Esports </div>
         <ul className="nav-list">
           <li className="nav-list-item">
             <FontAwesomeIcon icon={faShoppingCart} size="lg" />
