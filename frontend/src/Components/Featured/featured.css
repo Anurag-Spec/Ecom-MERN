@@ -3,20 +3,19 @@
   --button-background: #ea9210;
 }
 
+.featured-section {
+  border: 0.2rem solid;
+  border-color: var(--featured-background);
+}
 .featured-img-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border: 0.2rem solid;
-  border-color: var(--featured-background);
-  padding: 0.5rem;
 }
 
 .featured-image {
   width: 101px;
   height: 112px;
-  margin: 0.2rem;
-  padding: 0.2rem;
 }
 
 .featured-btn {

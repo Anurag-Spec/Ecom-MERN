@@ -13,7 +13,7 @@ function Featured() {
       ) : error ? (
         <div>{error}</div>
       ) : (
-        <div>
+        <div className="featured-section">
           <h3 className="featured-title">Featured Products</h3>
           <div className="featured-img-container">
             <img className="featured-image" src={products[0].image} alt="" />
