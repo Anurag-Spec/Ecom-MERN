@@ -1,5 +1,6 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useSelector } from "react-redux";
+import "./featured.css";
 
 function Featured() {
   const productList = useSelector((state) => state.productList);
@@ -14,9 +15,11 @@ function Featured() {
       ) : (
         <div>
           <h3 className="featured-title">Featured Products</h3>
-          <img className="featured-image" src={products[0].image} alt="" />
-          <img className="featured-image" src={products[7].image} alt="" />
-          <img className="featured-image" src={products[4].image} alt="" />
+          <div className="featured-img-container">
+            <img className="featured-image" src={products[0].image} alt="" />
+            <img className="featured-image" src={products[7].image} alt="" />
+            <img className="featured-image" src={products[4].image} alt="" />
+          </div>
           <button className="featured-btn">Show All</button>
         </div>
       )}

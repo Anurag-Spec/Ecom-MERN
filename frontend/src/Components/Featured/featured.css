@@ -1,0 +1,29 @@
+:root {
+  --featured-background: #2f2e41;
+  --button-background: #ea9210;
+}
+
+.featured-img-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: 0.2rem solid;
+  border-color: var(--featured-background);
+  padding: 0.5rem;
+}
+
+.featured-image {
+  width: 101px;
+  height: 112px;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+.featured-btn {
+  margin: 1rem;
+  padding: 0.8rem;
+  background-color: var(--button-background);
+  border-radius: 0.3rem;
+  font-weight: bolder;
+  color: var(--text-color);
+}
