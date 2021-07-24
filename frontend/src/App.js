@@ -3,6 +3,7 @@ import Carousel from "./Components/Carousel/Carousel";
 import Featured from "./Components/Featured/featured";
 import "./App.css";
 import About from "./Components/About/about";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Carousel />
       <Featured />
       <About />
+      <Footer/>
     </div>
   );
 }
