@@ -3,6 +3,13 @@
   --text-color: #fff;
 }
 
+.link {
+  color: var(--text-color);
+}
+.link:hover {
+  cursor: pointer;
+}
+
 .navbar {
   width: 100vw;
   display: flex;

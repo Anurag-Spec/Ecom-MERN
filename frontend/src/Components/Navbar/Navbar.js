@@ -1,5 +1,5 @@
 import React from "react";
-import Cart from "../Cart/Cart";
+import Cart from "../../Pages/Cart/Cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {
@@ -16,15 +16,19 @@ function Navbar() {
         <div className="nav-title">Dforce Esports </div>
         <ul className="nav-list">
           <li className="nav-list-item">
-            <Link to="/cart">
+            <Link className="link" to="/cart">
               <FontAwesomeIcon icon={faShoppingCart} size="lg" />
             </Link>
           </li>
           <li className="nav-list-item">
-            <FontAwesomeIcon icon={faUser} size="lg" />
+            <Link className="link" to="/login">
+              <FontAwesomeIcon icon={faUser} size="lg" />
+            </Link>
           </li>
           <li className="nav-list-item">
-            <FontAwesomeIcon icon={faHeart} size="lg" />
+            <Link className="link" to="/wishlist">
+              <FontAwesomeIcon icon={faHeart} size="lg" />
+            </Link>
           </li>
         </ul>
       </nav>

@@ -1,21 +1,35 @@
-import Navbar from "./Components/Navbar/Navbar";
-import Cart from "./Components/Cart/Cart";
-import Carousel from "./Components/Carousel/Carousel";
-import Featured from "./Components/Featured/featured";
-import "./Homepage.css";
-import About from "./Components/About/about";
-import Footer from "./Components/Footer/Footer";
+import Homepage from "./Pages/Homepage/Homepage";
+import WishList from "./Pages/Wishlist/Wishlist";
+import Products from "./Pages/Products/Products";
+import Login from "./Pages/Login/Login";
+import NoMatch from "./Pages/NoMatch/NoMatch";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Cart from "./Pages/Cart/Cart";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Route path="/cart" element={<Cart />} />
-        <Navbar />
-        <Carousel />
-        <Featured />
-        <About />
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/wishlist">
+            <WishList />
+          </Route>
+          <Route path="/products">
+            <Products />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="*">
+            <NoMatch />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
