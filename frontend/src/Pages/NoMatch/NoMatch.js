@@ -16,7 +16,7 @@ function NoMatch() {
           Go back Home
         </Link>
       </button>
-      <img className="error" src={image} alt="error image" />
+      <img className="error" src={image} alt="error" />
     </div>
   );
 }

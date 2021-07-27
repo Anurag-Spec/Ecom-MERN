@@ -3,8 +3,9 @@ import WishList from "./Pages/Wishlist/Wishlist";
 import Products from "./Pages/Products/Products";
 import Login from "./Pages/Login/Login";
 import NoMatch from "./Pages/NoMatch/NoMatch";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
+import SignUp from "./Pages/SignUp/SignUp";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/SignUp">
+            <SignUp />
           </Route>
           <Route path="*">
             <NoMatch />

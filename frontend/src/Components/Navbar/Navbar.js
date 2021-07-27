@@ -1,7 +1,7 @@
 import React from "react";
-import Cart from "../../Pages/Cart/Cart";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   faShoppingCart,
   faUser,
