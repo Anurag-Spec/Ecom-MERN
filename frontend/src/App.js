@@ -1,4 +1,5 @@
 import Homepage from "./Pages/Homepage/Homepage";
+import Navbar from "./Components/Navbar/Navbar";
 import WishList from "./Pages/Wishlist/Wishlist";
 import Products from "./Pages/Products/Products";
 import Login from "./Pages/Login/Login";
@@ -13,15 +14,19 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+            <Navbar />
             <Homepage />
           </Route>
           <Route path="/cart">
+            <Navbar />
             <Cart />
           </Route>
           <Route path="/wishlist">
+            <Navbar />
             <WishList />
           </Route>
           <Route path="/products">
+            <Navbar />
             <Products />
           </Route>
           <Route path="/login">
