@@ -9,7 +9,7 @@ export default class UsersCtrl {
 
     let filters = {};
     if (req.query.name) {
-      filters.brannamed = req.query.name;
+      filters.name = req.query.name;
     } else if (req.query.email) {
       filters.email = req.query.email;
     } else if (req.query.id) {

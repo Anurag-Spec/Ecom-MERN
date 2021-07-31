@@ -1,5 +1,6 @@
 import mongodb from "mongodb";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export default class UsersAdd {
   static async apiAddUsers(req, res, next) {
@@ -27,6 +28,26 @@ export default class UsersAdd {
                   if (err) {
                     throw err;
                   } else {
+                    jwt.sign(
+                      {
+                        name: name,
+                      },
+                      process.env.JWTSECRET,
+                      { expiresIn: 3600 },
+                      (err, token) => {
+                        if (err) {
+                          throw err;
+                        } else {
+                          res.json({
+                            token,
+                            user: {
+                              name: name,
+                              email: email,
+                            },
+                          });
+                        }
+                      }
+                    );
                     db.collection("user").insertOne({
                       email: email,
                       name: name,
