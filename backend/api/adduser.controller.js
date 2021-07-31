@@ -1,4 +1,5 @@
 import mongodb from "mongodb";
+import bcrypt from "bcryptjs";
 
 export default class UsersAdd {
   static async apiAddUsers(req, res, next) {
@@ -15,12 +16,27 @@ export default class UsersAdd {
       })
       .then(async (client) => {
         const db = client.db("Main");
-        db.collection("user").insertOne({
-          email: email,
-          name: name,
-          password: password,
-        });
+        db.collection("user")
+          .findOne({ email })
+          .then((user) => {
+            if (user) {
+              return res.status(400).json({ msg: "user already exixts" });
+            } else {
+              bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(password, salt, (err, hash) => {
+                  if (err) {
+                    throw err;
+                  } else {
+                    db.collection("user").insertOne({
+                      email: email,
+                      name: name,
+                      password: hash,
+                    });
+                  }
+                });
+              });
+            }
+          });
       });
-    res.send("success");
   }
 }
