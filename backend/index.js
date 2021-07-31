@@ -21,6 +21,7 @@ MongoClient.connect(process.env.ECOM_DB_URI, {
   .then(async (client) => {
     await ProductsDAO.injectDB(client);
     await UserDAO.injectDB(client);
+
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
     });
