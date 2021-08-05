@@ -1,4 +1,5 @@
 import Homepage from "./Pages/Homepage/Homepage";
+import PrivateRoute from "./Routes/PrivateRoute";
 import Navbar from "./Components/Navbar/Navbar";
 import WishList from "./Pages/Wishlist/Wishlist";
 import Products from "./Pages/Products/Products";
@@ -17,10 +18,10 @@ function App() {
             <Navbar />
             <Homepage />
           </Route>
-          <Route path="/cart">
+          <PrivateRoute path="/cart">
             <Navbar />
             <Cart />
-          </Route>
+          </PrivateRoute>
           <Route path="/wishlist">
             <Navbar />
             <WishList />
