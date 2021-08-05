@@ -40,4 +40,24 @@
   padding: 0.2rem;
   margin-top: 0.8rem;
   color: var(--text-color);
+  font-size: large;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  display: none;
+  right: 0;
+  min-width: 0.6rem;
+  padding: 0.2rem;
+  z-index: 1;
+  background-color: var(--nav-background);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

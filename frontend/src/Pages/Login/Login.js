@@ -23,7 +23,7 @@ function Login() {
     if (userInfo) {
       history.push("/");
     }
-  }, [userInfo]);
+  }, [userInfo, history]);
   return (
     <div>
       <div className="login-top"></div>
