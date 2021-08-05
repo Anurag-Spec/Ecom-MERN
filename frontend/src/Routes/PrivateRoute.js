@@ -1,16 +1,23 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
+import Login from "../Pages/Login/Login";
 
 function PrivateRoute({ path, ...props }) {
+  const history = useHistory();
   let isUserLoggedIn = false;
   if (localStorage?.getItem("userInfo")) {
-    isUserLoggedIn = JSON.parse(localStorage?.getItem("userInfo"));
+    isUserLoggedIn = true;
   }
-
+  console.log(isUserLoggedIn);
   return isUserLoggedIn ? (
     <Route {...props} path={path} />
   ) : (
-    <Route {...props} path="/login" />
+    (history.push("/login"),
+    (
+      <Route path="/login">
+        <Login />
+      </Route>
+    ))
   );
 }
 
