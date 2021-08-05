@@ -3,6 +3,7 @@ import {
   USER_SIGNIN_FAILED,
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
+  USER_SIGNOUT,
 } from "../constants/userconstants";
 
 export const Signin = (email, password) => async (dispatch) => {
@@ -17,4 +18,9 @@ export const Signin = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: USER_SIGNIN_FAILED, payload: error.message });
   }
+};
+
+export const signOut = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_SIGNOUT });
 };

@@ -1,20 +1,29 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
 import image from "./login.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Signin } from "../../actions/userActions";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const history = useHistory();
+
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(Signin(email, password));
   };
-
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [userInfo]);
   return (
     <div>
       <div className="login-top"></div>

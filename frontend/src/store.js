@@ -3,7 +3,13 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { productListReducer } from "./reducers/productReducers";
 import { userSigninReducer } from "./reducers/userReducer";
 
-const initialState = {};
+const initialState = {
+  userSignin: {
+    userInfo: localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null,
+  },
+};
 const reducer = combineReducers({
   productList: productListReducer,
   userSignin: userSigninReducer,
