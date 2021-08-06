@@ -22,10 +22,10 @@ function App() {
             <Navbar />
             <Cart />
           </PrivateRoute>
-          <Route path="/wishlist">
+          <PrivateRoute path="/wishlist">
             <Navbar />
             <WishList />
-          </Route>
+          </PrivateRoute>
           <Route path="/products">
             <Navbar />
             <Products />

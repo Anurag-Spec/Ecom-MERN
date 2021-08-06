@@ -8,6 +8,10 @@ function SignUp() {
       <div className="login-bottom"></div>
       <h3 className="login-title">Sign-Up</h3>
       <form className="login-form" action="">
+        <div className="label-input">Enter Name</div>
+        <label htmlFor="Name">
+          <input className="login-input" type="Name" id="Name" />
+        </label>
         <div className="label-input">Enter Email</div>
         <label htmlFor="email">
           <input className="login-input" type="email" id="email" />
