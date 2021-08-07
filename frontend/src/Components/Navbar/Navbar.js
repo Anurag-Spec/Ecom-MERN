@@ -19,6 +19,8 @@ function Navbar() {
   const signoutHandler = () => {
     dispatch(signOut());
   };
+  console.log(userInfo);
+
   return (
     <div>
       <nav className="navbar">
