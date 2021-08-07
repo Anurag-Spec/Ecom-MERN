@@ -1,5 +1,6 @@
 import { React } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./featured.css";
 
 function Featured() {
@@ -20,7 +21,9 @@ function Featured() {
             <img className="featured-image" src={products[7].image} alt="" />
             <img className="featured-image" src={products[4].image} alt="" />
           </div>
-          <button className="featured-btn">Show All</button>
+          <Link className="link" to="/products">
+            <button className="featured-btn">Show All</button>
+          </Link>
         </div>
       )}
     </div>
