@@ -1,5 +1,6 @@
 :root {
   --button-background: #2f2e41;
+  --card-background: whitesmoke;
 }
 
 .card-container {
@@ -13,7 +14,7 @@
 .long-cards {
   margin: 0.5rem;
   padding: 0.6rem;
-  background-color: whitesmoke;
+  background-color: var(--card-background);
   display: flex;
   flex-direction: column;
   justify-content: center;
