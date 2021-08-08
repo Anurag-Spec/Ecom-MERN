@@ -54,3 +54,8 @@
   border: none;
   color: var(--button-background);
 }
+
+.products-link {
+  text-decoration: none;
+  color: var(--button-background);
+}

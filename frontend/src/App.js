@@ -8,12 +8,17 @@ import NoMatch from "./Pages/NoMatch/NoMatch";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import SignUp from "./Pages/SignUp/SignUp";
+import Singleproduct from "./Pages/singleProduct/singleProduct";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
+          <Route path="/products/:id" children={<Singleproduct />}>
+            <Navbar />
+            <Singleproduct />
+          </Route>
           <Route exact path="/">
             <Navbar />
             <Homepage />
@@ -33,9 +38,11 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+
           <Route path="/SignUp">
             <SignUp />
           </Route>
+
           <Route path="*">
             <NoMatch />
           </Route>

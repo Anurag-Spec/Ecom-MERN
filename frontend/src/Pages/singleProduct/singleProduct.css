@@ -1,0 +1,44 @@
+.prod-img {
+  width: 80vw;
+  height: 50vh;
+  border-radius: 0.8rem;
+}
+
+.primary-button {
+  margin: 0.8rem;
+  background: var(--button-background);
+  color: white;
+  font-size: 0.7rem;
+  height: 2rem;
+  line-height: 2rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  padding: 0 0.5rem;
+
+  letter-spacing: 0.06rem;
+
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.secondary-button {
+  background: white;
+  color: black;
+  font-size: 0.7rem;
+  height: 2rem;
+  line-height: 2rem;
+  cursor: pointer;
+  text-align: center;
+  display: inline;
+  padding: 0 1.25rem;
+  letter-spacing: 0.06rem;
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+}
+.description {
+  border: 0.02rem black;
+  border-style: solid;
+  padding: 0.3rem;
+  margin: 0.3rem;
+}
