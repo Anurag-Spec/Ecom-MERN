@@ -23,8 +23,8 @@ export const filterProducts = (products, category) => (dispatch) => {
   dispatch({
     type: FILTER_PRODUCTS_BY_CATEGORY,
     payload: {
-      Category: category,
-      products: products,
+      category: category,
+      products: products.filter((product) => product.Category === category),
     },
   });
 };

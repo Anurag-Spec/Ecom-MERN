@@ -7,14 +7,23 @@ import { faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Products() {
-  const [category, setCategory] = useState("Mouse");
+  const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  console.log(productList, "prodlist");
+
   const { loading, error, products } = productList;
+  const filterHandler = () => {
+    setCategory("Mouse");
+  };
+
   useEffect(() => {
     dispatch(listProducts());
-    dispatch(filterProducts(products, category));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (category) {
+      dispatch(filterProducts(products, category));
+    }
   }, [dispatch, category]);
 
   return (
@@ -25,12 +34,13 @@ function Products() {
         <div>{error}</div>
       ) : (
         <div className="card-container">
-          {/* <div>
-            <select name="category" id="category">
+          <div>
+            <select onChange={filterHandler} name="category" id="category">
+              <option value="none" selected></option>
               <option value="mouse">mouse</option>
               <option value="Headphone">Headphone</option>
             </select>
-          </div> */}
+          </div>
           {products.map((product) => (
             <div className="long-cards">
               <Link className="products-link" to={`/products/${product.id}`}>

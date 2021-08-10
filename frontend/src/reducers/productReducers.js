@@ -13,9 +13,8 @@ export const productListReducer = (
     case PRODUCT_LIST_REQUEST:
       return { loading: true };
     case FILTER_PRODUCTS_BY_CATEGORY:
-      console.log(action, "actions");
       return {
-        Category: action.payload.Category,
+        Category: action.payload.category,
         products: action.payload.products,
       };
 
