@@ -5,16 +5,15 @@ import "./Products.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import Filterpage from "../../Components/filterPage/filterPage";
 
 function Products() {
   const [category, setCategory] = useState(null);
+  const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
 
   const { loading, error, products } = productList;
-  const filterHandler = () => {
-    setCategory("Mouse");
-  };
 
   useEffect(() => {
     dispatch(listProducts());
@@ -26,45 +25,65 @@ function Products() {
     }
   }, [dispatch, category]);
 
-  return (
-    <div>
-      {loading ? (
-        <div>Loading</div>
-      ) : error ? (
-        <div>{error}</div>
-      ) : (
-        <div className="card-container">
-          <div>
-            <select onChange={filterHandler} name="category" id="category">
-              <option value="none" selected></option>
-              <option value="mouse">mouse</option>
-              <option value="Headphone">Headphone</option>
-            </select>
-          </div>
-          {products.map((product) => (
-            <div className="long-cards">
-              <Link className="products-link" to={`/products/${product.id}`}>
-                <div>
-                  <img src={product.image} alt="" />
-                </div>
-
-                <div className="card-text-sub ">{product.name}</div>
-
-                <div className="card-text">{product.brand}</div>
-              </Link>
-              <div className="card-btn-container">
-                <button className="card-button">
-                  <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-                </button>
-                <button className="card-button">
-                  <FontAwesomeIcon icon={faHeart} size="2x" />
-                </button>
+  if (showFilter) {
+    return (
+      <div>
+        <Filterpage />
+        <button
+          className="btn-apply"
+          onClick={() => {
+            setShowFilter(!showFilter);
+          }}
+        >
+          Apply
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {loading ? (
+          <div>Loading</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          <div className="card-container">
+            <div className="bottom-bar">
+              <div className="bottom-bar-option">Sort</div>
+              <div
+                onClick={() => {
+                  setShowFilter(!showFilter);
+                }}
+                className="bottom-bar-option"
+              >
+                Filter
               </div>
             </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+            {products.map((product) => (
+              <div className="long-cards">
+                <Link className="products-link" to={`/products/${product.id}`}>
+                  <div>
+                    <img src={product.image} alt="" />
+                  </div>
+
+                  <div className="card-text-sub ">{product.name}</div>
+
+                  <div className="card-text">{product.brand}</div>
+                </Link>
+                <div className="card-btn-container">
+                  <button className="card-button">
+                    <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+                  </button>
+                  <button className="card-button">
+                    <FontAwesomeIcon icon={faHeart} size="2x" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 export default Products;

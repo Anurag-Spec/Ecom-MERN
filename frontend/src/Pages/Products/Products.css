@@ -59,3 +59,37 @@
   text-decoration: none;
   color: var(--button-background);
 }
+
+.bottom-bar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0%;
+  z-index: 3;
+  justify-content: space-evenly;
+  width: 100vw;
+  border-style: solid;
+  border-width: 0.3rem;
+  background-color: var(--button-background);
+}
+
+.bottom-bar-option {
+  font-size: large;
+  color: var(--card-background);
+  font-weight: bolder;
+  width: 100%;
+  border-style: solid;
+}
+
+.btn-apply {
+  font-size: large;
+  color: var(--card-background);
+  background-color: var(--button-background);
+  font-weight: bolder;
+  width: 100%;
+  border-style: solid;
+  position: fixed;
+  bottom: 0%;
+  z-index: 3;
+  right: 0%;
+}
