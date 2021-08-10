@@ -3,6 +3,7 @@ import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
   PRODUCT_LIST_FAIL,
+  FILTER_PRODUCTS_BY_CATEGORY,
 } from "../constants/productConstants";
 
 export const listProducts = () => async (dispatch) => {
@@ -16,4 +17,14 @@ export const listProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message });
   }
+};
+
+export const filterProducts = (products, category) => (dispatch) => {
+  dispatch({
+    type: FILTER_PRODUCTS_BY_CATEGORY,
+    payload: {
+      Category: category,
+      products: products,
+    },
+  });
 };

@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../../actions/actions";
+import { filterProducts, listProducts } from "../../actions/actions";
 import "./Products.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 function Products() {
+  const [category, setCategory] = useState("Mouse");
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
+  console.log(productList, "prodlist");
   const { loading, error, products } = productList;
   useEffect(() => {
     dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(filterProducts(products, category));
+  }, [dispatch, category]);
+
   return (
     <div>
       {loading ? (
@@ -21,6 +25,12 @@ function Products() {
         <div>{error}</div>
       ) : (
         <div className="card-container">
+          {/* <div>
+            <select name="category" id="category">
+              <option value="mouse">mouse</option>
+              <option value="Headphone">Headphone</option>
+            </select>
+          </div> */}
           {products.map((product) => (
             <div className="long-cards">
               <Link className="products-link" to={`/products/${product.id}`}>
