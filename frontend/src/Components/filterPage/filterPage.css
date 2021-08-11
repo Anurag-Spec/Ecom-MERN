@@ -2,6 +2,8 @@
   width: 100vw;
   height: 70vh;
   margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
 }
 
 .filter-option-cont {
@@ -21,4 +23,22 @@
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+}
+
+.filter-list {
+  position: fixed;
+  overflow-y: scroll;
+  top: 12.8%;
+  left: 25%;
+  margin: 2.5rem;
+  border: 0.02rem solid black;
+  width: 60vw;
+  height: 55vh;
+}
+.filter-list-item {
+  margin: 0.5rem;
+  font-style: italic;
+  border: 0.02rem solid black;
+  padding: 1rem;
+  text-align: left;
 }
