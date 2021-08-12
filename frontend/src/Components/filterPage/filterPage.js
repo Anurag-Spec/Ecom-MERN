@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { filterProducts } from "../../actions/actions";
 import "./filterPage.css";
 
 function Filterpage() {
@@ -9,7 +10,17 @@ function Filterpage() {
   const [showbrand, setShowBrand] = useState(false);
   const [showstock, setShowStock] = useState(false);
   const [showreviews, setShowReviews] = useState(false);
-  products.map((product) => console.log(product.Category));
+  const [category, setCategory] = useState("");
+  const clearFilter = () => {
+    setCategory("");
+  };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (category) {
+      dispatch(filterProducts(products, category));
+    }
+  }, [dispatch, category]);
 
   return (
     <div className="filter-main">
@@ -59,8 +70,9 @@ function Filterpage() {
                     id="category"
                     name="cateogry"
                     value="cat"
+                    onChange={() => setCategory(cat)}
                   />
-                  <label for="category"> {cat}</label>
+                  <label for="category">{cat}</label>
                 </div>
               )
             )}

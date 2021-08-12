@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import Filterpage from "../../Components/filterPage/filterPage";
 
 function Products() {
-  const [category, setCategory] = useState(null);
   const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
@@ -18,12 +17,6 @@ function Products() {
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (category) {
-      dispatch(filterProducts(products, category));
-    }
-  }, [dispatch, category]);
 
   if (showFilter) {
     return (
