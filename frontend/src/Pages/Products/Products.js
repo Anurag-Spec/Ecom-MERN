@@ -8,12 +8,11 @@ import { Link } from "react-router-dom";
 import Filterpage from "../../Components/filterPage/filterPage";
 
 function Products() {
-  const [showFilter, setShowFilter] = useState(false);
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-
+  const [showFilter, setShowFilter] = useState(false);
   const { loading, error, products } = productList;
-
+  console.log(products, "prodonprod");
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
@@ -21,15 +20,7 @@ function Products() {
   if (showFilter) {
     return (
       <div>
-        <Filterpage />
-        <button
-          className="btn-apply"
-          onClick={() => {
-            setShowFilter(!showFilter);
-          }}
-        >
-          Apply
-        </button>
+        <Filterpage toggleFilter={(showFilter) => setShowFilter(showFilter)} />
       </div>
     );
   } else {

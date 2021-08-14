@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterProducts } from "../../actions/actions";
+import { filterProducts, listProducts } from "../../actions/actions";
 import "./filterPage.css";
 
-function Filterpage() {
+function Filterpage(props) {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
-  const [showcat, setShowCat] = useState(false);
+  console.log(products, "prod");
+
+  const [showcat, setShowCat] = useState(true);
   const [showbrand, setShowBrand] = useState(false);
-  const [showstock, setShowStock] = useState(false);
+
   const [showreviews, setShowReviews] = useState(false);
-  const [category, setCategory] = useState("");
+
+  const [category, setCategory] = useState([]);
+  const [brand, setBrand] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const clearFilter = () => {
     setCategory("");
   };
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (category) {
-      dispatch(filterProducts(products, category));
-    }
-  }, [dispatch, category]);
 
   return (
     <div className="filter-main">
@@ -43,14 +43,6 @@ function Filterpage() {
         </div>
         <div
           onClick={() => {
-            setShowStock(!showstock);
-          }}
-          className="filter-option"
-        >
-          In-stock
-        </div>
-        <div
-          onClick={() => {
             setShowReviews(!showreviews);
           }}
           className="filter-option"
@@ -62,7 +54,7 @@ function Filterpage() {
         {showcat && (
           <div className="filter-list-item">
             <h4>Category</h4>
-            {[...new Set(products.map((product) => product.Category))].map(
+            {[...new Set(products?.map((product) => product.Category))].map(
               (cat) => (
                 <div>
                   <input
@@ -70,7 +62,7 @@ function Filterpage() {
                     id="category"
                     name="cateogry"
                     value="cat"
-                    onChange={() => setCategory(cat)}
+                    onChange={() => setCategory([...category, cat])}
                   />
                   <label for="category">{cat}</label>
                 </div>
@@ -81,41 +73,55 @@ function Filterpage() {
         {showbrand && (
           <div className="filter-list-item">
             <h4>Brand</h4>
-            {[...new Set(products.map((product) => product.brand))].map(
-              (brand) => (
+            {[...new Set(products?.map((product) => product.brand))].map(
+              (brnd) => (
                 <div>
                   <input
                     type="checkbox"
                     id="brand"
                     name="brand"
                     value="brand"
+                    onChange={() => setBrand([...brand, brnd])}
                   />
-                  <label for="category"> {brand}</label>
+                  <label for="category"> {brnd}</label>
                 </div>
               )
             )}
           </div>
         )}
-        {showstock && (
+
+        {showreviews && (
           <div className="filter-list-item">
-            <h4>InStock</h4>
-            {[...new Set(products.map((product) => product.InStock))].map(
-              (stock) => (
+            <h4>Reviews</h4>
+            {[...new Set(products?.map((product) => product.reviews))].map(
+              (rev) => (
                 <div>
                   <input
                     type="checkbox"
                     id="brand"
                     name="brand"
                     value="brand"
+                    onChange={() => setReviews([...reviews, rev])}
                   />
-                  <label for="category"> {stock}</label>
+                  <label for="category"> {rev}</label>
                 </div>
               )
             )}
           </div>
         )}
-        {showreviews && <div className="filter-list-item">Reviews</div>}
       </div>
+      <button
+        className="btn-apply"
+        onClick={() => {
+          props.toggleFilter(false);
+          dispatch(filterProducts(products, category, brand, reviews));
+        }}
+      >
+        Apply
+      </button>
+      <button className="btn-clear" onClick={clearFilter}>
+        Clear
+      </button>
     </div>
   );
 }

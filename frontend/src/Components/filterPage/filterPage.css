@@ -42,3 +42,28 @@
   padding: 1rem;
   text-align: left;
 }
+
+.btn-apply {
+  font-size: large;
+  color: var(--card-background);
+  background-color: var(--button-background);
+  font-weight: bolder;
+  width: 50%;
+  border-style: solid;
+  position: fixed;
+  bottom: 0%;
+  z-index: 3;
+  right: 0%;
+}
+.btn-clear {
+  font-size: large;
+  color: var(--card-background);
+  background-color: var(--button-background);
+  font-weight: bolder;
+  width: 50%;
+  border-style: solid;
+  position: fixed;
+  bottom: 0%;
+  z-index: 3;
+  left: 0%;
+}

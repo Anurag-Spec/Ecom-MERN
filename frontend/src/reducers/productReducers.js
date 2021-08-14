@@ -1,5 +1,7 @@
 import {
+  FILTER_PRODUCTS_BY_BRAND,
   FILTER_PRODUCTS_BY_CATEGORY,
+  FILTER_PRODUCTS_BY_REVIEWS,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -15,6 +17,16 @@ export const productListReducer = (
     case FILTER_PRODUCTS_BY_CATEGORY:
       return {
         Category: action.payload.category,
+        products: action.payload.products,
+      };
+    case FILTER_PRODUCTS_BY_BRAND:
+      return {
+        Brand: action.payload.brand,
+        products: action.payload.products,
+      };
+    case FILTER_PRODUCTS_BY_REVIEWS:
+      return {
+        Reviews: action.payload.reviews,
         products: action.payload.products,
       };
 
