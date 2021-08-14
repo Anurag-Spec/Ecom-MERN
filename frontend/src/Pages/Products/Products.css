@@ -80,16 +80,3 @@
   width: 100%;
   border-style: solid;
 }
-
-.btn-apply {
-  font-size: large;
-  color: var(--card-background);
-  background-color: var(--button-background);
-  font-weight: bolder;
-  width: 100%;
-  border-style: solid;
-  position: fixed;
-  bottom: 0%;
-  z-index: 3;
-  right: 0%;
-}
