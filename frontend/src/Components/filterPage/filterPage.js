@@ -6,21 +6,21 @@ import "./filterPage.css";
 function Filterpage(props) {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
-  console.log(products, "prod");
 
   const [showcat, setShowCat] = useState(true);
   const [showbrand, setShowBrand] = useState(false);
 
   const [showreviews, setShowReviews] = useState(false);
-
+  const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
   const [brand, setBrand] = useState([]);
   const [reviews, setReviews] = useState([]);
   const clearFilter = () => {
-    setCategory("");
+    setCategory([]);
+    setBrand([]);
+    setReviews([]);
+    dispatch(listProducts());
   };
-
-  const dispatch = useDispatch();
 
   return (
     <div className="filter-main">
@@ -60,7 +60,7 @@ function Filterpage(props) {
                   <input
                     type="checkbox"
                     id="category"
-                    name="cateogry"
+                    name="category"
                     value="cat"
                     onChange={() => setCategory([...category, cat])}
                   />
@@ -83,7 +83,7 @@ function Filterpage(props) {
                     value="brand"
                     onChange={() => setBrand([...brand, brnd])}
                   />
-                  <label for="category"> {brnd}</label>
+                  <label for="brand"> {brnd}</label>
                 </div>
               )
             )}
@@ -98,12 +98,12 @@ function Filterpage(props) {
                 <div>
                   <input
                     type="checkbox"
-                    id="brand"
-                    name="brand"
-                    value="brand"
+                    id="reviews"
+                    name="reviews"
+                    value="reviews"
                     onChange={() => setReviews([...reviews, rev])}
                   />
-                  <label for="category"> {rev}</label>
+                  <label for="reviews"> {rev}</label>
                 </div>
               )
             )}

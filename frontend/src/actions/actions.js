@@ -23,26 +23,32 @@ export const listProducts = () => async (dispatch) => {
 
 export const filterProducts =
   (products, category, brand, reviews) => (dispatch) => {
-    dispatch({
-      type: FILTER_PRODUCTS_BY_CATEGORY,
-      payload: {
-        category: category,
-        products: products.filter((item) => category.includes(item.Category)),
-      },
-    });
-    dispatch({
-      type: FILTER_PRODUCTS_BY_BRAND,
-      payload: {
-        brand: brand,
-        products: products.filter((item) => brand.includes(item.brand)),
-      },
-    });
+    if (category.length > 0) {
+      dispatch({
+        type: FILTER_PRODUCTS_BY_CATEGORY,
+        payload: {
+          category: category,
+          products: products.filter((item) => category.includes(item.Category)),
+        },
+      });
+    }
 
-    dispatch({
-      type: FILTER_PRODUCTS_BY_REVIEWS,
-      payload: {
-        reviews: reviews,
-        products: products.filter((item) => reviews.includes(item.reviews)),
-      },
-    });
+    if (brand.length > 0) {
+      dispatch({
+        type: FILTER_PRODUCTS_BY_BRAND,
+        payload: {
+          brand: brand,
+          products: products.filter((item) => brand.includes(item.brand)),
+        },
+      });
+    }
+    if (reviews.length > 0) {
+      dispatch({
+        type: FILTER_PRODUCTS_BY_REVIEWS,
+        payload: {
+          reviews: reviews,
+          products: products.filter((item) => reviews.includes(item.reviews)),
+        },
+      });
+    }
   };

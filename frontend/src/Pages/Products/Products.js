@@ -12,7 +12,7 @@ function Products() {
   const productList = useSelector((state) => state.productList);
   const [showFilter, setShowFilter] = useState(false);
   const { loading, error, products } = productList;
-  console.log(products, "prodonprod");
+
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
