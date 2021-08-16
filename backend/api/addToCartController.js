@@ -22,16 +22,39 @@ export default class CartAdd {
               db.collection("products")
                 .findOne({ id })
                 .then((product) => {
-                  db.collection("cart").insertOne({
-                    user: user,
-                    product: product,
-                  });
-                })
-                .then(res.json("product added to Cart"))
-                .then(res.status("200"));
-            } else {
-              res.json("invalid request");
-              res.status("400");
+                  db.collection("cart")
+                    .findOne({ user: email })
+                    .then((cartUser) => {
+                      if (cartUser) {
+                        if ((cartUser.products.id = id)) {
+                          db.collection("cart")
+                            .updateOne(
+                              { id: cartUser.products.id },
+                              {
+                                $set: {
+                                  quantity: 2,
+                                },
+                              }
+                            )
+                            .then(res.json("quantity update"));
+                        } else {
+                          cartUser.products
+                            .push(product)
+                            .then(res.json("product update"));
+                        }
+                      } else {
+                        product.quantity = 1;
+                        db.collection("cart")
+                          .insertOne({
+                            user: user.email,
+                            products: [product],
+                          })
+
+                          .then(res.json("product added to Cart"))
+                          .then(res.status("200"));
+                      }
+                    });
+                });
             }
           });
       });
