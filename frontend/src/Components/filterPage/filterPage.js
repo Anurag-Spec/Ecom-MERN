@@ -6,10 +6,8 @@ import "./filterPage.css";
 function Filterpage(props) {
   const productList = useSelector((state) => state.productList);
   const { products } = productList;
-
   const [showcat, setShowCat] = useState(true);
   const [showbrand, setShowBrand] = useState(false);
-
   const [showreviews, setShowReviews] = useState(false);
   const dispatch = useDispatch();
   const [category, setCategory] = useState([]);
