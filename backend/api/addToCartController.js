@@ -26,21 +26,51 @@ export default class CartAdd {
                     .findOne({ user: email })
                     .then((cartUser) => {
                       if (cartUser) {
-                        if ((cartUser.products.id = id)) {
+                        let cartId = cartUser.products.map(
+                          (singProd) => singProd.id
+                        );
+                        console.log(cartId, "cartId");
+                        let cartQuant = cartUser.products.map(
+                          (singProd) => singProd.quantity
+                        );
+                        if (cartId.includes(id)) {
+                          product.quantity = parseInt(cartQuant) + 1;
                           db.collection("cart")
                             .updateOne(
-                              { id: cartUser.products.id },
+                              { user: email },
                               {
                                 $set: {
-                                  quantity: 2,
+                                  products: [
+                                    cartUser.products.filter(
+                                      (item) => item.id !== id
+                                    ),
+                                  ],
                                 },
                               }
                             )
-                            .then(res.json("quantity update"));
+                            .then(
+                              db.collection("cart").updateOne(
+                                { user: email },
+                                {
+                                  $set: {
+                                    products: [...cartUser.products, product],
+                                  },
+                                }
+                              )
+                            )
+                            .then(res.json("quant update"));
                         } else {
-                          cartUser.products
-                            .push(product)
-                            .then(res.json("product update"));
+                          product.quantity = 1;
+                          db.collection("cart")
+                            .updateOne(
+                              { user: email },
+                              {
+                                $set: {
+                                  products: [...cartUser.products, product],
+                                },
+                              }
+                            )
+                            .then(res.json("prod update"));
                         }
                       } else {
                         product.quantity = 1;
