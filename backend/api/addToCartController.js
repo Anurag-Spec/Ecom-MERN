@@ -29,7 +29,7 @@ export default class CartAdd {
                         let cartId = cartUser.products.map(
                           (singProd) => singProd.id
                         );
-                        console.log(cartId, "cartId");
+
                         let cartQuant = cartUser.products.map(
                           (singProd) => singProd.quantity
                         );
@@ -38,25 +38,26 @@ export default class CartAdd {
                           db.collection("cart")
                             .updateOne(
                               { user: email },
-                              {
-                                $set: {
-                                  products: [
-                                    cartUser.products.filter(
-                                      (item) => item.id !== id
-                                    ),
-                                  ],
-                                },
-                              }
+                              { $pull: { products: { id: id } } }
                             )
+
                             .then(
-                              db.collection("cart").updateOne(
-                                { user: email },
-                                {
-                                  $set: {
-                                    products: [...cartUser.products, product],
-                                  },
-                                }
-                              )
+                              db
+                                .collection("cart")
+                                .findOne({ user: email })
+                                .then((cartProd) => {
+                                  db.collection("cart").updateOne(
+                                    { user: email },
+                                    {
+                                      $set: {
+                                        products: [
+                                          ...cartProd.products,
+                                          product,
+                                        ],
+                                      },
+                                    }
+                                  );
+                                })
                             )
                             .then(res.json("quant update"));
                         } else {
