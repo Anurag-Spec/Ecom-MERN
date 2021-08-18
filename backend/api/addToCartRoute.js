@@ -5,6 +5,6 @@ import CartGet from "./getCartController.js";
 const router = express.Router();
 
 router.route("/api/addCart").post(CartAdd.apiAddToCart);
-router.route("/api/addCart").get(CartGet.apiGetCart);
+router.route("/api/add1Cart").post(CartGet.apiGetCart);
 
 export default router;
