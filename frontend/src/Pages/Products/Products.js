@@ -16,8 +16,6 @@ function Products() {
   const productList = useSelector((state) => state.productList);
   const [showFilter, setShowFilter] = useState(false);
   const { error, products } = productList;
-  const addCart = useSelector((state) => state.addCart);
-  const { loading } = addCart;
 
   useEffect(() => {
     dispatch(listProducts());
@@ -60,16 +58,13 @@ function Products() {
                   <div className="card-text">{product.brand}</div>
                 </Link>
                 <div className="card-btn-container">
-                  {loading ? (
-                    <div>Loading</div>
-                  ) : (
-                    <button
-                      onClick={() => dispatch(AddCart(email, product.id))}
-                      className="card-button"
-                    >
-                      <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-                    </button>
-                  )}
+                  <button
+                    onClick={() => dispatch(AddCart(email, product.id))}
+                    className="card-button"
+                  >
+                    <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+                  </button>
+
                   <button className="card-button">
                     <FontAwesomeIcon icon={faHeart} size="2x" />
                   </button>
