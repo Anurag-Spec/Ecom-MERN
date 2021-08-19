@@ -15,7 +15,7 @@ import { signOut } from "../../actions/userActions";
 function Navbar() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  console.log("useronnav", userInfo);
+
   const dispatch = useDispatch();
   const signoutHandler = () => {
     dispatch(signOut());
