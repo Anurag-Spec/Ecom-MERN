@@ -12,15 +12,12 @@ function Cart() {
   const dispatch = useDispatch();
   const getCart = useSelector((state) => state.getCart);
 
-  const { loading, cart } = getCart;
+  const { cart } = getCart;
 
   useEffect(() => {
     setEmail(userInfo.user.email);
-  }, []);
-
-  useEffect(() => {
     dispatch(GetCart(email));
-  }, [email]);
+  }, [email, dispatch]);
 
   return (
     <div>
@@ -31,15 +28,10 @@ function Cart() {
             <div className="cartProduct-details">
               <div className="cartProduct-name">{item.name}</div>
               <div className="cartProduct-brand">{item.brand}</div>
-              {loading ? (
-                <div>Loading</div>
-              ) : (
-                <div className="cartProduct-quantity">
-                  Quantity:
-                  {item.quantity}
-                </div>
-              )}
-
+              <div className="cartProduct-quantity">
+                Quantity:
+                {item.quantity}
+              </div>
               <div>
                 <button onClick={() => dispatch(AddCart(email, item.id))}>
                   <FontAwesomeIcon icon={faPlus} />

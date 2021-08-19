@@ -7,7 +7,6 @@ import {
 import { GetCart } from "./getCart";
 
 export const AddCart = (email, id) => async (dispatch) => {
-  dispatch({ type: ADD_CART_REQUEST, payload: { email, id } });
   try {
     const { data } = await axios.post("http://localhost:5000/api/addCart", {
       email,

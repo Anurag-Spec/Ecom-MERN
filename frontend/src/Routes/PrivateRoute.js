@@ -8,7 +8,6 @@ function PrivateRoute({ path, ...props }) {
   if (localStorage?.getItem("userInfo")) {
     isUserLoggedIn = true;
   }
-  console.log(isUserLoggedIn);
   return isUserLoggedIn ? (
     <Route {...props} path={path} />
   ) : (
