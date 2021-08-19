@@ -9,7 +9,6 @@ export const getCartReducer = (state = {}, action) => {
     case ADD_CART_REQUEST:
       return { loading: true };
     case ADD_CART_SUCCESS:
-      console.log("red", action.payload);
       return { loading: false, cart: action.payload };
     case ADD_CART_FAIL:
       return { loading: false, error: action.payload };
