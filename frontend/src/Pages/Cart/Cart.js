@@ -19,12 +19,8 @@ function Cart() {
   }, []);
 
   useEffect(() => {
-    if (email) {
-      dispatch(GetCart(email));
-    }
-  }, [dispatch, email]);
-
-  console.log("cart", cart);
+    dispatch(GetCart(email));
+  }, [email]);
 
   return (
     <div>

@@ -22,7 +22,7 @@ export default class CartGet {
               res.json(user.products);
               res.status(200);
             } else {
-              res.json("no user found");
+              res.json([]);
             }
           });
       });
