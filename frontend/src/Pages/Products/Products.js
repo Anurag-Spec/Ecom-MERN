@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterProducts, listProducts } from "../../actions/actions";
+import { listProducts } from "../../actions/actions";
 import "./Products.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Filterpage from "../../Components/filterPage/filterPage";
+import { AddCart } from "../../actions/addCart";
 
 function Products() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const [email, setEmail] = useState("");
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const [showFilter, setShowFilter] = useState(false);
-  const { loading, error, products } = productList;
+  const { error, products } = productList;
+  const addCart = useSelector((state) => state.addCart);
+  const { loading } = addCart;
 
   useEffect(() => {
     dispatch(listProducts());
+    setEmail(userInfo.user.email);
   }, [dispatch]);
 
   if (showFilter) {
@@ -26,9 +33,7 @@ function Products() {
   } else {
     return (
       <div>
-        {loading ? (
-          <div>Loading</div>
-        ) : error ? (
+        {error ? (
           <div>{error}</div>
         ) : (
           <div className="card-container">
@@ -43,7 +48,7 @@ function Products() {
                 Filter
               </div>
             </div>
-            {products.map((product) => (
+            {products?.map((product) => (
               <div className="long-cards">
                 <Link className="products-link" to={`/products/${product.id}`}>
                   <div>
@@ -55,9 +60,16 @@ function Products() {
                   <div className="card-text">{product.brand}</div>
                 </Link>
                 <div className="card-btn-container">
-                  <button className="card-button">
-                    <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-                  </button>
+                  {loading ? (
+                    <div>Loading</div>
+                  ) : (
+                    <button
+                      onClick={() => dispatch(AddCart(email, product.id))}
+                      className="card-button"
+                    >
+                      <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+                    </button>
+                  )}
                   <button className="card-button">
                     <FontAwesomeIcon icon={faHeart} size="2x" />
                   </button>

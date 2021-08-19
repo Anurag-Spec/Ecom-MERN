@@ -15,18 +15,10 @@ export const getCartReducer = (state = {}, action) => {
       return { loading: false, cart: action.payload };
     case GET_CART_FAIL:
       return { loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-};
-
-export const AddCartReducer = (state = {}, action) => {
-  switch (action.type) {
     case ADD_CART_REQUEST:
       return { loading: true };
     case ADD_CART_SUCCESS:
-      return { loading: false, product: action.payload };
+      return { loading: false, cart: action.payload };
     case ADD_CART_FAIL:
       return { loading: false, error: action.payload };
 

@@ -4,6 +4,7 @@ import {
   ADD_CART_REQUEST,
   ADD_CART_SUCCESS,
 } from "../constants/cartConstants";
+import { GetCart } from "./getCart";
 
 export const AddCart = (email, id) => async (dispatch) => {
   dispatch({ type: ADD_CART_REQUEST, payload: { email, id } });
