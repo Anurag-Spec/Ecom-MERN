@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetWishList } from "../../actions/getWishList";
+import { RemoveWishList } from "../../actions/removeWishList";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus } from "@fortawesome/free-solid-svg-icons";
 
 function WishList() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -24,6 +27,9 @@ function WishList() {
             <div className="cartProduct-details">
               <div className="cartProduct-name">{item.name}</div>
               <div className="cartProduct-brand">{item.brand}</div>
+              <button onClick={() => dispatch(RemoveWishList(email, item.id))}>
+                <FontAwesomeIcon icon={faMinus} />
+              </button>
             </div>
           </div>
         ))}
