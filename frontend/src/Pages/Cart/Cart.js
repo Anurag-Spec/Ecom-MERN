@@ -18,7 +18,7 @@ function Cart() {
   useEffect(() => {
     setEmail(userInfo.user.email);
     dispatch(GetCart(email));
-  }, [email, dispatch]);
+  }, [email, GetCart]);
 
   return (
     <div>
