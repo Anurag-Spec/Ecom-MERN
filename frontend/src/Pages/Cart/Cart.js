@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
 import { AddCart } from "../../actions/addCart";
+import { RemoveCart } from "../../actions/removeCart";
 function Cart() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -36,7 +37,7 @@ function Cart() {
                 <button onClick={() => dispatch(AddCart(email, item.id))}>
                   <FontAwesomeIcon icon={faPlus} />
                 </button>
-                <button>
+                <button onClick={() => dispatch(RemoveCart(email, item.id))}>
                   <FontAwesomeIcon icon={faMinus} />
                 </button>
               </div>

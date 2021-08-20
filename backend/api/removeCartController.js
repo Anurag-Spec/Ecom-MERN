@@ -1,7 +1,7 @@
 import mongodb from "mongodb";
 
-export default class CartAdd {
-  static async apiAddToCart(req, res, next) {
+export default class CartRemove {
+  static async apiRemoveCart(req, res, next) {
     const { id, email } = req.body;
     const MongoClient = mongodb.MongoClient;
     MongoClient.connect(process.env.ECOM_DB_URI, {
@@ -24,19 +24,19 @@ export default class CartAdd {
                   .findOne({ user: email })
                   .then((userPresent) => {
                     if (userPresent) {
-                      let cartId = userPresent.products.map(
-                        (singProd) => singProd.id
+                      let cartQuant = userPresent.products.filter(
+                        (item) => item.id === id.toString()
                       );
-                      if (cartId.includes(id)) {
+                      if (cartQuant[0].quantity > 1) {
                         db.collection("cart")
                           .findOneAndUpdate(
                             { user: email },
                             {
                               $inc: {
-                                "products.$[elem].quantity": 1,
+                                "products.$[elem].quantity": -1,
                               },
                             },
-                            { arrayFilters: [{ "elem.id": id }] }
+                            { arrayFilters: [{ "elem.id": id.toString() }] }
                           )
                           .then(
                             db
@@ -51,22 +51,10 @@ export default class CartAdd {
                           .updateOne(
                             { user: email },
                             {
-                              $set: {
-                                products: [...userPresent.products, product],
-                              },
+                              $pull: { products: { id: id.toString() } },
                             }
                           )
-                          .then(
-                            db.collection("cart").findOneAndUpdate(
-                              { user: email },
-                              {
-                                $inc: {
-                                  "products.$[elem].quantity": 1,
-                                },
-                              },
-                              { arrayFilters: [{ "elem.id": { $gte: id } }] }
-                            )
-                          )
+
                           .then(
                             db
                               .collection("cart")
@@ -76,23 +64,6 @@ export default class CartAdd {
                               })
                           );
                       }
-                    } else {
-                      product.quantity = 1;
-                      db.collection("cart")
-                        .insertOne({
-                          user: user.email,
-                          products: [product],
-                        })
-
-                        .then(
-                          db
-                            .collection("cart")
-                            .findOne({ user: email })
-                            .then((addedProd) => {
-                              res.json(addedProd.products);
-                            })
-                        )
-                        .then(res.status("200"));
                     }
                   });
               });
