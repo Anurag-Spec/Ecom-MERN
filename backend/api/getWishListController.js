@@ -22,7 +22,7 @@ export default class WishListGet {
               res.json(user.products);
               res.status(200);
             } else {
-              res.json("no products added");
+              res.json([]);
             }
           });
       });

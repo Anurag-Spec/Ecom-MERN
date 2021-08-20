@@ -30,7 +30,11 @@ export default class WishListAdd {
                           (singProd) => singProd.id
                         );
                         if (wishId.includes(id)) {
-                          res.json("Already in Wishlist");
+                          db.collection("cart")
+                            .findOne({ user: email })
+                            .then((updatedQuant) => {
+                              res.json(updatedQuant.products);
+                            });
                         } else {
                           db.collection("wishlist")
                             .updateOne(
