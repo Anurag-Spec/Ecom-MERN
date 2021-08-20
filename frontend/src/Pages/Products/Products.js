@@ -7,6 +7,7 @@ import { faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Filterpage from "../../Components/filterPage/filterPage";
 import { AddCart } from "../../actions/addCart";
+import { AddWish } from "../../actions/addWishList";
 
 function Products() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -66,7 +67,10 @@ function Products() {
                     <FontAwesomeIcon icon={faShoppingCart} size="2x" />
                   </button>
 
-                  <button className="card-button">
+                  <button
+                    onClick={(e) => dispatch(AddWish(email, product.id))}
+                    className="card-button"
+                  >
                     <FontAwesomeIcon icon={faHeart} size="2x" />
                   </button>
                 </div>

@@ -30,7 +30,7 @@ export default class WishListAdd {
                           (singProd) => singProd.id
                         );
                         if (wishId.includes(id)) {
-                          db.collection("cart")
+                          db.collection("wishlist")
                             .findOne({ user: email })
                             .then((updatedQuant) => {
                               res.json(updatedQuant.products);
@@ -45,7 +45,14 @@ export default class WishListAdd {
                                 },
                               }
                             )
-                            .then(res.json("prod update"));
+                            .then(
+                              db
+                                .collection("wishlist")
+                                .findOne({ user: email })
+                                .then((updatedProd) => {
+                                  res.json(updatedProd.products);
+                                })
+                            );
                         }
                       } else {
                         db.collection("wishlist")
@@ -54,7 +61,14 @@ export default class WishListAdd {
                             products: [product],
                           })
 
-                          .then(res.json("product added to Wishlist"))
+                          .then(
+                            db
+                              .collection("wishlist")
+                              .findOne({ user: email })
+                              .then((addedProd) => {
+                                res.json(addedProd.products);
+                              })
+                          )
                           .then(res.status("200"));
                       }
                     });

@@ -8,7 +8,6 @@ function WishList() {
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
   const getWishList = useSelector((state) => state.getWishList);
-
   const { wishList } = getWishList;
 
   useEffect(() => {
