@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { AddCart } from "../../actions/addCart";
+import { AddWish } from "../../actions/addWishList";
 import "./singleProduct.css";
 function Singleproduct() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const [email, setEmail] = useState("");
   const productList = useSelector((state) => state.productList);
   const { error, products } = productList;
   const [name, setName] = useState("");
+  const [prodId, setProdId] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -14,6 +20,7 @@ function Singleproduct() {
   const [brand, setBrand] = useState("");
   const { id } = useParams();
   useEffect(() => {
+    setEmail(userInfo.user.email);
     const newProduct = products.find((product) => product.id === id);
     setName(newProduct?.name);
     setImage(newProduct?.image);
@@ -22,8 +29,9 @@ function Singleproduct() {
     setPrice(newProduct?.price);
     setReviews(newProduct?.reviews);
     setBrand(newProduct?.brand);
+    setProdId(newProduct?.id);
   }, [id, products]);
-
+  const dispatch = useDispatch();
   return (
     <div>
       {error ? (
@@ -40,8 +48,18 @@ function Singleproduct() {
           <h1>{name}</h1>
           <h2>{brand}</h2>
           <img className="prod-img" src={image} alt="prod" />
-          <button className="primary-button">Add to Cart</button>
-          <button className="secondary-button">Wishlist</button>
+          <button
+            onClick={() => dispatch(AddCart(email, prodId))}
+            className="primary-button"
+          >
+            Add to Cart
+          </button>
+          <button
+            onClick={(e) => dispatch(AddWish(email, prodId))}
+            className="secondary-button"
+          >
+            Wishlist
+          </button>
           <p className="description">{description}</p>
           <h5>{price}</h5>
           <p>Reviews:{reviews}</p>

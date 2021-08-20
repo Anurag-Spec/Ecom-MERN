@@ -24,7 +24,9 @@ function Navbar() {
   return (
     <div>
       <nav className="navbar">
-        <div className="nav-title">Dforce Esports </div>
+        <Link className="link" to="/">
+          <div className="nav-title">Dforce Esports </div>
+        </Link>
         <ul className="nav-list">
           <li className="nav-list-item">
             <Link className="link" to="/cart">
