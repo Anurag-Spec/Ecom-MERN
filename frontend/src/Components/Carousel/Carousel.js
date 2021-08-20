@@ -18,9 +18,13 @@ function Carousel() {
     }
   }, 4000);
 
-  useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+  useEffect(
+    () => {
+      dispatch(listProducts());
+    },
+    [dispatch],
+    clearTimeout()
+  );
 
   return (
     <div>
