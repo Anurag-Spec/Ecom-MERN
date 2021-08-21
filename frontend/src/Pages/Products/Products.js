@@ -13,16 +13,17 @@ function Products() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const [email, setEmail] = useState("");
+  const [showSort, setShowSort] = useState(false);
+  const [isSorted, setisSorted] = useState("");
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const [showFilter, setShowFilter] = useState(false);
   const { error, products } = productList;
-  const getCart = useSelector((state) => state.getCart);
 
   useEffect(() => {
-    dispatch(listProducts());
+    dispatch(listProducts(isSorted));
     setEmail(userInfo.user.email);
-  }, [dispatch]);
+  }, [dispatch, isSorted, showSort]);
 
   if (showFilter) {
     return (
@@ -38,7 +39,13 @@ function Products() {
         ) : (
           <div className="card-container">
             <div className="bottom-bar">
-              <div className="bottom-bar-option">Sort</div>
+              <div
+                onClick={() => setShowSort(!showSort)}
+                className="bottom-bar-option"
+              >
+                Sort
+              </div>
+
               <div
                 onClick={() => {
                   setShowFilter(!showFilter);
@@ -48,6 +55,28 @@ function Products() {
                 Filter
               </div>
             </div>
+            {showSort ? (
+              <div className="sort-list">
+                <div
+                  className="sort-list-item"
+                  onClick={() => {
+                    setisSorted("HightoLow");
+                    setShowSort(false);
+                  }}
+                >
+                  High to Low
+                </div>
+                <div
+                  className="sort-list-item"
+                  onClick={() => {
+                    setisSorted("LowtoHigh");
+                    setShowSort(false);
+                  }}
+                >
+                  Low To High
+                </div>
+              </div>
+            ) : undefined}
             {products?.map((product) => (
               <div className="long-cards">
                 <Link className="products-link" to={`/products/${product.id}`}>
@@ -58,6 +87,7 @@ function Products() {
                   <div className="card-text-sub ">{product.name}</div>
 
                   <div className="card-text">{product.brand}</div>
+                  <div className="card-text">Price: £{product.Price}</div>
                 </Link>
                 <div className="card-btn-container">
                   <button

@@ -5,6 +5,8 @@ import {
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
+  SORT_PRODUCTS_BY_HIGHTOLOW,
+  SORT_PRODUCTS_BY_LOWTOHIGH,
 } from "../constants/productConstants";
 
 export const productListReducer = (
@@ -31,7 +33,12 @@ export const productListReducer = (
       };
 
     case PRODUCT_LIST_SUCCESS:
+      console.log(action.payload);
       return { loading: false, products: action.payload.data.products };
+    case SORT_PRODUCTS_BY_HIGHTOLOW:
+      return { products: action.payload };
+    case SORT_PRODUCTS_BY_LOWTOHIGH:
+      return { products: action.payload };
     case PRODUCT_LIST_FAIL:
       return { loading: false, error: action.payload };
 

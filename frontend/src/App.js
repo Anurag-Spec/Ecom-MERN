@@ -31,10 +31,10 @@ function App() {
             <Navbar />
             <WishList />
           </PrivateRoute>
-          <Route path="/products">
+          <PrivateRoute path="/products">
             <Navbar />
             <Products />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
