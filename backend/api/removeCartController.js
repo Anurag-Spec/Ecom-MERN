@@ -27,7 +27,7 @@ export default class CartRemove {
                       let cartQuant = userPresent.products.filter(
                         (item) => item.id === id.toString()
                       );
-                      if (cartQuant[0].quantity > 1) {
+                      if (cartQuant[0]?.quantity > 1) {
                         db.collection("cart")
                           .findOneAndUpdate(
                             { user: email },

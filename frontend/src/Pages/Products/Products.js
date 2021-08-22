@@ -13,6 +13,7 @@ function Products() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const [email, setEmail] = useState("");
+
   const [showSort, setShowSort] = useState(false);
   const [isSorted, setisSorted] = useState("");
   const dispatch = useDispatch();
@@ -91,7 +92,9 @@ function Products() {
                 </Link>
                 <div className="card-btn-container">
                   <button
-                    onClick={(e) => dispatch(AddCart(email, product.id))}
+                    onClick={() => {
+                      dispatch(AddCart(email, product.id));
+                    }}
                     className="card-button"
                   >
                     <FontAwesomeIcon icon={faShoppingCart} size="2x" />

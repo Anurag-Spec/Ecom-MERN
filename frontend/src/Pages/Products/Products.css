@@ -55,6 +55,10 @@
   color: var(--button-background);
 }
 
+.active {
+  color: red;
+}
+
 .products-link {
   text-decoration: none;
   color: var(--button-background);
