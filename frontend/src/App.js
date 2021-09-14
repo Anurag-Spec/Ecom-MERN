@@ -19,6 +19,7 @@ function App() {
           <Route path="/products/:id" children={<Singleproduct />}>
             <Navbar />
             <Singleproduct />
+            <Footer />
           </Route>
           <Route exact path="/">
             <Navbar />
@@ -28,10 +29,12 @@ function App() {
           <PrivateRoute path="/cart">
             <Navbar />
             <Cart />
+            <Footer />
           </PrivateRoute>
           <PrivateRoute path="/wishlist">
             <Navbar />
             <WishList />
+            <Footer />
           </PrivateRoute>
           <PrivateRoute path="/products">
             <Navbar />
@@ -39,14 +42,17 @@ function App() {
           </PrivateRoute>
           <Route path="/login">
             <Login />
+            <Footer />
           </Route>
 
           <Route path="/SignUp">
             <SignUp />
+            <Footer />
           </Route>
 
           <Route path="*">
             <NoMatch />
+            <Footer />
           </Route>
         </Switch>
       </Router>
