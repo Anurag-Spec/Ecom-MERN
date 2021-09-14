@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./Pages/Cart/Cart";
 import SignUp from "./Pages/SignUp/SignUp";
 import Singleproduct from "./Pages/singleProduct/singleProduct";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/">
             <Navbar />
             <Homepage />
+            <Footer />
           </Route>
           <PrivateRoute path="/cart">
             <Navbar />
