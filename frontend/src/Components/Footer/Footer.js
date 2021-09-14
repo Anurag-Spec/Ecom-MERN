@@ -27,7 +27,7 @@ function Footer() {
         />
       </div>
       <div className="footer-links-container">
-        <h3 className="footer-title">Sitemap</h3>
+        <h3 className="footer-subtitle">Sitemap</h3>
         <Link className="footer-links" to="/">
           Home
         </Link>
@@ -41,7 +41,7 @@ function Footer() {
           Wislist
         </Link>
       </div>
-      <div className="nav-title">DForce Gaming</div>
+      <div className="footer-title">DForce Gaming</div>
     </footer>
   );
 }

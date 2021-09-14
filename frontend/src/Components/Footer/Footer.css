@@ -12,12 +12,12 @@
 .footer-links {
   cursor: pointer;
 }
-.footer-title {
+.footer-subtitle {
   color: var(--text-color);
   margin: 0.15rem;
 }
 
-.nav-title {
+.footer-title {
   font-size: large;
   margin: 0.2rem 0 0 0.2rem;
   padding: 0.8rem;
