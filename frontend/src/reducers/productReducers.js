@@ -33,7 +33,6 @@ export const productListReducer = (
       };
 
     case PRODUCT_LIST_SUCCESS:
-      console.log(action.payload);
       return { loading: false, products: action.payload.data.products };
     case SORT_PRODUCTS_BY_HIGHTOLOW:
       return { products: action.payload };
