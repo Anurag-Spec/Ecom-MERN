@@ -36,10 +36,10 @@ function App() {
             <WishList />
             <Footer />
           </PrivateRoute>
-          <PrivateRoute path="/products">
+          <Route path="/products">
             <Navbar />
             <Products />
-          </PrivateRoute>
+          </Route>
           <Route path="/login">
             <Login />
             <Footer />

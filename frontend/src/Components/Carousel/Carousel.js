@@ -10,20 +10,24 @@ function Carousel() {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
-  setTimeout(() => {
-    if (imageIndex < products?.length - 1) {
-      setImageIndex(imageIndex + 1);
-    } else {
-      setImageIndex(0);
-    }
-  }, 4000);
+  if (true) {
+    setTimeout(() => {
+      if (imageIndex < products?.length - 1) {
+        setImageIndex(imageIndex + 1);
+      } else {
+        setImageIndex(0);
+      }
+    }, 4000);
+  }
 
   useEffect(
     () => {
       dispatch(listProducts());
     },
     [dispatch],
-    clearTimeout()
+    () => {
+      clearTimeout();
+    }
   );
 
   return (

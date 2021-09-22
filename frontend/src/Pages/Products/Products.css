@@ -55,8 +55,6 @@
   color: var(--button-background);
 }
 
-
-
 .products-link {
   text-decoration: none;
   color: var(--button-background);
@@ -94,4 +92,11 @@
 }
 .sort-list-item {
   margin: 0.3rem;
+}
+
+.added {
+  font-weight: bolder;
+  font-size: large;
+  color: green;
+  margin: 0.5rem;
 }

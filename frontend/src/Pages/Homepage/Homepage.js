@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import About from "../../Components/About/about";
 import Featured from "../../Components/Featured/featured";
