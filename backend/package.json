@@ -18,5 +18,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.9",
     "nodemon": "^2.0.12"
+  },
+  "engines": {
+    "node": "v14.16.0"
   }
 }

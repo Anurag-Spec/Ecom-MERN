@@ -1,0 +1,65 @@
+{
+  "name": "Ecommerce Backend",
+  "description": "This is a sample ecom app",
+  "keywords": ["ecom", "HTML5", "MERN"],
+  "website": "https://ecom-mern1.herokuapp.com/",
+  "repository": "https://github.com/Anurag-Spec/Ecom-MERN",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "bundle exec rake bootstrap"
+  },
+  "env": {
+    "ECOM_DB_URI": {
+      "description": "A url to connect to Mongo",
+      "value": "mongodb+srv://anurag:12345@cluster0.9skih.mongodb.net/Main?retryWrites=true&w=majority"
+    },
+    "JWTSECRET": {
+      "description": "secret",
+      "value": "ECOM_jwtSecret"
+    },
+    "PRODUCTS_NS": {
+      "description": "database",
+      "value": "Main"
+    },
+    "USERS_NS": {
+      "description": "database",
+      "value": "Main"
+    },
+    "PORT": {
+      "description": "website",
+      "value": "https://ecom-mern1.herokuapp.com/"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "openredis",
+    {
+      "plan": "mongolab:shared-single-small",
+      "as": "MONGO"
+    },
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/stomita/heroku-buildpack-phantomjs"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
+}
