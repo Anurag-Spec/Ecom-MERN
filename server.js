@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/", products);
+app.use("/api/products", products);
 app.use("/", users);
 app.use("/", cart);
 app.use("/", wish);
