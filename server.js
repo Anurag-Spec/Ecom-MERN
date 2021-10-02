@@ -9,10 +9,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/products", products);
+app.use("/", products);
 app.use("/", users);
 app.use("/", cart);
 app.use("/", wish);
-app.use("*", (req, res) => res.status(404).json({ error: "not found" }));
+app.use("*", (req, res) => res.status(404).json({ error: "notin found" }));
 
 export default app;
