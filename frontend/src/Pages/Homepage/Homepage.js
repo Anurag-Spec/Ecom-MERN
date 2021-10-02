@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 import About from "../../Components/About/about";
 import Featured from "../../Components/Featured/featured";
 import Carousel from "../../Components/Carousel/Carousel";

@@ -16,7 +16,7 @@ function WishList() {
   useEffect(() => {
     setEmail(userInfo.user.email);
     dispatch(GetWishList(email));
-  }, [email, dispatch]);
+  }, [email, dispatch, userInfo.user.email]);
 
   return (
     <div>

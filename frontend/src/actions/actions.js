@@ -33,8 +33,8 @@ export const listProducts = (isSorted) => async (dispatch) => {
         payload: sortedPrice,
       });
     } else {
-      const {} = await Axios.get("http://localhost:5000/api/products").then(
-        (res) => dispatch({ type: PRODUCT_LIST_SUCCESS, payload: res })
+      await Axios.get("http://localhost:5000/api/products").then((res) =>
+        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: res })
       );
     }
   } catch (error) {

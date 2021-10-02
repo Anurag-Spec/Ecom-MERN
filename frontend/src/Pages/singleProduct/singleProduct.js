@@ -30,7 +30,7 @@ function Singleproduct() {
     setReviews(newProduct?.reviews);
     setBrand(newProduct?.brand);
     setProdId(newProduct?.id);
-  }, [id, products]);
+  }, [id, products, userInfo.user.email]);
   const dispatch = useDispatch();
   return (
     <div>
