@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Register } from "../../actions/Register";
 
 import "./SignUp.css";
@@ -63,6 +63,7 @@ function SignUp() {
           Create Account
         </button>
       </form>
+      <Link to="/Login">Have an account? Login </Link>
     </div>
   );
 }

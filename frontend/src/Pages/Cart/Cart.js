@@ -6,6 +6,7 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
 import { AddCart } from "../../actions/addCart";
 import { RemoveCart } from "../../actions/removeCart";
+import { Link } from "react-router-dom";
 function Cart() {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -45,6 +46,9 @@ function Cart() {
           </div>
         ))}
       </div>
+      <Link className="primary-button" to="/products">
+        Go back
+      </Link>
     </div>
   );
 }

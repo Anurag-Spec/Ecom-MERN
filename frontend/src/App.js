@@ -42,12 +42,10 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
-            <Footer />
           </Route>
 
           <Route path="/SignUp">
             <SignUp />
-            <Footer />
           </Route>
 
           <Route path="*">

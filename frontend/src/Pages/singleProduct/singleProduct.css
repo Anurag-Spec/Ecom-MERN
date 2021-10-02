@@ -42,3 +42,28 @@
   padding: 0.3rem;
   margin: 0.3rem;
 }
+@media only screen and (min-width: 768px) {
+  .prod-img {
+    margin: auto;
+    display: block;
+    width: 40vw;
+    height: 65vh;
+  }
+
+  .primary-button {
+    font-size: 1.5rem;
+  }
+  .secondary-button {
+    font-size: 1.5rem;
+  }
+  .description {
+    font-size: 1.5rem;
+    max-width: 65vw;
+    margin: auto;
+  }
+  .reviews,
+  .price,
+  .category {
+    font-size: 1.2rem;
+  }
+}

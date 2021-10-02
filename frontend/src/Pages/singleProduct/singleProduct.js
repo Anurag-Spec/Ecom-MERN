@@ -61,11 +61,14 @@ function Singleproduct() {
             Wishlist
           </button>
           <p className="description">{description}</p>
-          <h5>{price}</h5>
-          <p>Reviews:{reviews}</p>
-          <p>
+          <h5 className="price">{price}</h5>
+          <p className="reviews">Reviews:{reviews}</p>
+          <p className="category">
             Category: <strong>{category}</strong>
           </p>
+          <Link className="primary-button" to="/products">
+            Go back
+          </Link>
         </div>
       )}
     </div>

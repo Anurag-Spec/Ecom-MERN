@@ -6,6 +6,7 @@
 .featured-section {
   border: 0.2rem solid;
   border-color: var(--featured-background);
+  background-color: var(--featured-background);
 }
 .featured-img-container {
   display: flex;
@@ -18,11 +19,26 @@
   height: 112px;
 }
 
+.featured-title {
+  color: var(--text-color);
+}
+
 .featured-btn {
   margin: 1rem;
   padding: 0.8rem;
-  background-color: var(--button-background);
+  background-color: var(--image-background);
   border-radius: 0.3rem;
   font-weight: bolder;
   color: var(--text-color);
+}
+
+.featured-btn:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .featured-image {
+    width: 250px;
+    height: 250px;
+  }
 }

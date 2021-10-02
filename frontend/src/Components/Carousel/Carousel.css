@@ -10,3 +10,10 @@
 .image-container {
   background-color: var(--image-background);
 }
+
+@media only screen and (min-width: 768px) {
+  .carousel-image {
+    height: 55vh;
+    width: 40vw;
+  }
+}

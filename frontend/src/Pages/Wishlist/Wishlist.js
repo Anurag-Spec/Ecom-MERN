@@ -4,6 +4,7 @@ import { GetWishList } from "../../actions/getWishList";
 import { RemoveWishList } from "../../actions/removeWishList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function WishList() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -34,6 +35,9 @@ function WishList() {
           </div>
         ))}
       </div>
+      <Link className="primary-button" to="/products">
+        Go back
+      </Link>
     </div>
   );
 }

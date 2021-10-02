@@ -43,7 +43,6 @@
   display: block;
   width: 60vw;
   height: 3vh;
-  margin: auto;
   background-color: var(--input-back);
 }
 
@@ -67,4 +66,32 @@
 
 input:focus:invalid {
   background: lightpink;
+}
+
+@media only screen and (min-width: 768px) {
+  .login-image {
+    width: 30%;
+    height: 30vh;
+  }
+  .login-top {
+    width: 30vw;
+    height: 12vh;
+  }
+  .login-bottom {
+    width: 30vw;
+    height: 12vh;
+    left: 75%;
+  }
+  .login-input {
+    width: 35vw;
+    height: 3vh;
+  }
+  .login-form {
+    margin-left: 5rem;
+  }
+  .login-button {
+    width: 30vw;
+    margin-left: 3rem;
+    margin-top: 2.5rem;
+  }
 }
