@@ -10,7 +10,7 @@
   },
   "env": {
     "ECOM_DB_URI": {
-      "description": "A url to connect to Mongo",
+      "description": "A url to connect to MongoDB",
       "value": "mongodb+srv://anurag:12345@cluster0.9skih.mongodb.net/Main?retryWrites=true&w=majority"
     },
     "JWTSECRET": {
